@@ -60,12 +60,12 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <TableView layoutX="419.0" layoutY="340.0" opacity="0.63" prefHeight="149.0" prefWidth="452.0">
+      <TableView fx:id="tblCustomers" layoutX="419.0" layoutY="340.0" opacity="0.63" prefHeight="149.0" prefWidth="452.0">
         <columns>
-          <TableColumn prefWidth="95.0" text="First Name" />
-          <TableColumn prefWidth="100.0" text="Last Name" />
-            <TableColumn prefWidth="128.0" text="E-mail" />
-            <TableColumn prefWidth="128.0" text="Contact Number" />
+          <TableColumn fx:id="colFName" prefWidth="95.0" text="First Name" />
+          <TableColumn fx:id="colLName" prefWidth="100.0" text="Last Name" />
+            <TableColumn fx:id="colEmail" prefWidth="128.0" text="E-mail" />
+            <TableColumn fx:id="colConNumber" prefWidth="128.0" text="Contact Number" />
         </columns>
       </TableView>
       <Button fx:id="btnReload" layoutX="619.0" layoutY="493.0" mnemonicParsing="false" onAction="#btnReloadOnAction" prefHeight="21.0" prefWidth="84.0" text="Reload" textAlignment="CENTER">
