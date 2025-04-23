@@ -1,8 +1,15 @@
 package controller;
 
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 import model.customer;
 
 import javax.lang.model.type.ArrayType;
@@ -15,6 +22,11 @@ public class customerFormController {
     public TextField txtEmail;
     public TextField txtContactNumber;
     public Button btnReload;
+    public TableView tblCustomers;
+    public TableColumn colFName;
+    public TableColumn colLName;
+    public TableColumn colEmail;
+    public TableColumn colConNumber;
 
     ArrayList<customer> customerList = new ArrayList<>();
 
@@ -25,11 +37,21 @@ public class customerFormController {
                 txtEmail.getText(),
                 txtContactNumber.getText()
         ));
+        btnReloadOnAction(actionEvent);
     }
 
     public void btnReloadOnAction(ActionEvent actionEvent) {
+        colFName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        colLName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        colConNumber.setCellValueFactory(new PropertyValueFactory<>("contactNumber"));
+
+        ObservableList<customer> customerObservableList = FXCollections.observableArrayList();
+
         customerList.forEach(customer -> {
-            System.out.println(customer);
+            customerObservableList.add(customer);
         });
+
+        tblCustomers.setItems(customerObservableList);
     }
 }
